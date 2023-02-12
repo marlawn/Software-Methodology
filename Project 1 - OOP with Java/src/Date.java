@@ -62,7 +62,11 @@ public class Date implements Comparable<Date> {
         return month + "/" + day + "/" + year;
     }
     // you do not override these two because it is being overloaded (different parameters)
-    public boolean equals(Date d) {
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Date)) return false;
+        Date d = (Date) o;
         return d.month == this.month && d.year == this.year && d.day == this.day;
     }
     @Override
