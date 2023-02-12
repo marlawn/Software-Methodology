@@ -29,10 +29,15 @@ public class Profile implements Comparable<Profile> {
     public String toString() {
         return "First Name: " + fname + "\r\n" + "Last Name: " + lname + "\r\n" + "Date of Birth: " + dob;
     }
-    public boolean equals(Profile p) {
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Profile)) return false;
+        Profile p = (Profile) o;
         return p.getFname() == this.fname && p.getLname() == this.lname && p.getDob().getDay() == this.dob.getDay() &&
         p.getDob().getMonth() == this.getDob().getMonth() && p.getDob().getYear() == this.getDob().getYear();
     }
+    @Override
     public int compareTo(Profile o) {
         if (this.lname.compareTo(o.getLname()) != 0) { return this.lname.compareTo(o.getLname()); }
         if (this.fname.compareTo(o.getFname()) != 0) { return this.fname.compareTo(o.getFname()); }
